@@ -1,3 +1,0 @@
-git rm filename.txt
-git commit -m "Delete filename.txt"
-git push
