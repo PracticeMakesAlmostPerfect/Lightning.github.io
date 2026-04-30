@@ -33,7 +33,7 @@ body {
     overflow: hidden;
 }
 
-/* 🌧️ Rain layers */
+/* 🌧️ Rain */
 .rain, .rain2 {
     position: absolute;
     width: 100%;
@@ -82,23 +82,12 @@ body {
     text-shadow:
         0 0 10px rgba(251,191,36,0.7),
         0 0 25px rgba(251,191,36,0.5);
-    animation: flicker 4s infinite;
-    z-index: 2;
-}
-
-@keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.95; }
-    52% { opacity: 1; }
-    54% { opacity: 0.9; }
-    56% { opacity: 1; }
 }
 
 .hero p {
     color: #93c5fd;
     font-size: 20px;
     margin-top: 10px;
-    z-index: 2;
 }
 
 /* NAV */
@@ -148,6 +137,27 @@ section.show {
 
 h2 {
     color: #93c5fd;
+}
+
+/* ⭐ HOURS FIX (THIS IS THE IMPORTANT PART) */
+.hours .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.hours .row:last-child {
+    border-bottom: none;
+}
+
+.hours .row span:first-child {
+    font-weight: bold;
+    color: #93c5fd;
+}
+
+.hours .row span:last-child {
+    color: white;
 }
 
 /* FORM */
@@ -209,14 +219,16 @@ footer {
 
 <section id="hours">
     <h2>Hours</h2>
-    <div class="card">
-        <p>Mon: 12:00PM - 10:00PM</p>
-        <p>Tue: 12:00PM - 11:00PM</p>
-        <p>Wed: 12:00PM - 11:00PM</p>
-        <p>Thu: 12:00PM - 11:00PM</p>
-        <p>Fri: 12:00PM - 12:00AM</p>
-        <p>Sat: 9:00AM - 12:00AM</p>
-        <p>Sun: 10:00AM - 9:00PM</p>
+    <div class="card hours">
+
+        <div class="row"><span>Mon</span><span>12:00PM - 10:00PM</span></div>
+        <div class="row"><span>Tue</span><span>12:00PM - 11:00PM</span></div>
+        <div class="row"><span>Wed</span><span>12:00PM - 11:00PM</span></div>
+        <div class="row"><span>Thu</span><span>12:00PM - 11:00PM</span></div>
+        <div class="row"><span>Fri</span><span>12:00PM - 12:00AM</span></div>
+        <div class="row"><span>Sat</span><span>9:00AM - 12:00AM</span></div>
+        <div class="row"><span>Sun</span><span>10:00AM - 9:00PM</span></div>
+
     </div>
 </section>
 
@@ -246,40 +258,6 @@ footer {
 <footer>
     <p>© 2026 Lightning Strikes Bowl</p>
 </footer>
-
-<script>
-function lightningFlash() {
-    const flash = document.getElementById("flash");
-    flash.style.opacity = "0.5";
-    setTimeout(() => flash.style.opacity = "0", 120);
-}
-
-function randomLightning() {
-    const delay = Math.random() * 7000 + 4000;
-    setTimeout(() => {
-        lightningFlash();
-        randomLightning();
-    }, delay);
-}
-randomLightning();
-
-/* Scroll animation */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    const trigger = window.innerHeight * 0.85;
-
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) {
-            sec.classList.add("show");
-        }
-    });
-});
-
-/* Trigger on load */
-window.dispatchEvent(new Event("scroll"));
-</script>
 
 </body>
 </html>
