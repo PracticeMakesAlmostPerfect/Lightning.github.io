@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lightning Strikes Bowl</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #f8fafc;
+    background: linear-gradient(135deg,#0f172a,#1e293b,#334155,#0f172a);
+    overflow-x: hidden;
+}
+
+/* 🌧️ Rain */
+.rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("https://i.imgur.com/U1c2x6M.png");
+    opacity: 0.12;
+    animation: rainMove 0.6s linear infinite;
+}
+
+@keyframes rainMove {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(100px); }
+}
+
+/* ⚡ Flash */
+#flash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* ⚡ Lightning streak */
+.lightning {
+    position: fixed;
+    top: -200px;
+    width: 2px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+    opacity: 0;
+    transform: rotate(10deg);
+    z-index: 2;
+}
+
+/* Layout */
+header, nav, section, footer {
+    position: relative;
+    z-index: 4;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 2px solid #fbbf24;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    color: #fbbf24;
+}
+
+header p {
+    color: #93c5fd;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    background: rgba(30, 41, 59, 0.9);
+    padding: 12px;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fbbf24;
+}
+
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: rgba(15, 23, 42, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #93c5fd;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 6px;
+    background: #1e293b;
+    color: white;
+}
+
+button {
+    background: #fbbf24;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #0f172a;
+}
+
+button:hover {
+    background: #f59e0b;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    margin-top: 40px;
+    color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="rain"></div>
+<div id="flash"></div>
+<div class="lightning" id="bolt"></div>
+
+<header>
+    <h1>Lightning Strikes Bowl</h1>
+    <p>Family Fun. Great Food. Perfect Strikes.</p>
+</header>
+
+<nav>
+    <a href="#pricing">Pricing</a>
+    <a href="#hours">Hours</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="pricing">
+    <h2>Pricing</h2>
+    <div class="card">
+        <p><strong>Lane Rental:</strong> $__ per hour</p>
+        <p><strong>Shoe Rental:</strong> $__</p>
+        <p><strong>Special Deals:</strong> Edit anytime</p>
+    </div>
+</section>
+
+<section id="hours">
+    <h2>Hours</h2>
+    <div class="card">
+        <p>Monday - Friday: __</p>
+        <p>Saturday: __</p>
+        <p>Sunday: __</p>
+    </div>
+</section>
+
+<section id="events">
+    <h2>Monthly Events</h2>
+    <div class="card">
+        <p>⚡ League Nights</p>
+        <p>🎳 Family Specials</p>
+        <p>🌩️ Glow Bowling</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Schedule a Visit</h2>
+
+    <div class="card">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <textarea name="message" placeholder="Preferred date/time or questions" rows="4"></textarea>
+            <button type="submit">Send Request</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Lightning Strikes Bowl</p>
+</footer>
+
+<script>
+function lightningFlash() {
+    const flash = document.getElementById("flash");
+    const bolt = document.getElementById("bolt");
+
+    flash.style.opacity = "0.6";
+    setTimeout(() => { flash.style.opacity = "0"; }, 120);
+
+    bolt.style.left = Math.random() * window.innerWidth + "px";
+    bolt.style.opacity = "1";
+    setTimeout(() => { bolt.style.opacity = "0"; }, 200);
+}
+
+function randomLightning() {
+    const delay = Math.random() * 7000 + 4000;
+    setTimeout(() => {
+        lightningFlash();
+        randomLightning();
+    }, delay);
+}
+
+randomLightning();
+</script>
+
+</body>
+</html>
