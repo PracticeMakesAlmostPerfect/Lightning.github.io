@@ -13,11 +13,6 @@ body {
     background: #0f172a;
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
 /* 🌩️ HERO */
 .hero {
     height: 100vh;
@@ -68,17 +63,6 @@ html {
     100% { transform: translateY(50px); }
 }
 
-/* ⚡ Flash */
-#flash {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: white;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5;
-}
-
 /* ⚡ Title */
 .hero h1 {
     font-size: 70px;
@@ -117,20 +101,11 @@ nav a:hover {
     color: #fbbf24;
 }
 
-/* SECTIONS */
+/* SECTIONS (NO ANIMATION = NO BUGS) */
 section {
     padding: 80px 20px;
     max-width: 900px;
     margin: auto;
-
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-}
-
-section.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .card {
@@ -144,7 +119,7 @@ h2 {
     color: #93c5fd;
 }
 
-/* ⭐ HOURS */
+/* HOURS */
 .hours .row {
     display: flex;
     justify-content: space-between;
@@ -159,10 +134,6 @@ h2 {
 .hours .row span:first-child {
     font-weight: bold;
     color: #93c5fd;
-}
-
-.hours .row span:last-child {
-    color: white;
 }
 
 /* FORM */
@@ -192,7 +163,7 @@ footer {
     background: #0f172a;
 }
 
-/* 🎂 Birthday candle effect */
+/* 🎂 Birthday candle */
 .birthday {
     position: relative;
     display: inline-block;
@@ -205,7 +176,6 @@ footer {
     animation: candleFlicker 2s infinite;
 }
 
-/* wax drips */
 .birthday::after {
     content: "";
     position: absolute;
@@ -227,7 +197,7 @@ footer {
     50% { filter: brightness(1.15); transform: translateY(-1px); }
 }
 
-/* 🌩️ Glow Bowling effect */
+/* 🌩️ Glow Bowling */
 .glow {
     color: #38bdf8;
     font-weight: bold;
@@ -257,8 +227,6 @@ footer {
 </head>
 
 <body>
-
-<div id="flash"></div>
 
 <div class="hero">
     <div class="rain"></div>
