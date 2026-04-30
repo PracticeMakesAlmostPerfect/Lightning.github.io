@@ -13,6 +13,11 @@ body {
     background: #0f172a;
 }
 
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 /* 🌩️ HERO */
 .hero {
     height: 100vh;
@@ -187,7 +192,7 @@ footer {
     background: #0f172a;
 }
 
-/* 🎂 Birthday candle dripping effect */
+/* 🎂 Birthday candle effect */
 .birthday {
     position: relative;
     display: inline-block;
@@ -197,6 +202,7 @@ footer {
     font-weight: bold;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(255, 153, 0, 0.4);
+    animation: candleFlicker 2s infinite;
 }
 
 /* wax drips */
@@ -216,18 +222,12 @@ footer {
     opacity: 0.9;
 }
 
-/* small flicker glow like candle */
-.birthday {
-    animation: candleFlicker 2s infinite;
-}
-
 @keyframes candleFlicker {
     0%, 100% { filter: brightness(1); transform: translateY(0); }
     50% { filter: brightness(1.15); transform: translateY(-1px); }
 }
 
-
-/* 🌩️ Glow Bowling neon effect */
+/* 🌩️ Glow Bowling effect */
 .glow {
     color: #38bdf8;
     font-weight: bold;
@@ -253,7 +253,6 @@ footer {
             0 0 45px #0ea5e9;
     }
 }
-    
 </style>
 </head>
 
@@ -261,7 +260,6 @@ footer {
 
 <div id="flash"></div>
 
-<!-- HERO -->
 <div class="hero">
     <div class="rain"></div>
     <div class="rain2"></div>
@@ -305,9 +303,7 @@ footer {
     <div class="card">
 
         <p>⚡ League Nights Mon-Fri</p>
-
         <p class="birthday">🎂 Birthday Specials</p>
-
         <p class="glow">🌩️ Glow Bowling</p>
 
     </div>
